@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "David Luengo",
+    "vehicle": "BMW Serie 3",
+    "year": "2019",
+    "rating": 5,
+    "testimonial": "Álvaro fue siempre muy atento y correcto. Me fue informando en todo momento, eso fue un punto clave.",
+    "highlight": "Seguro y rápido (en mi caso). Un peso que te quitas de encima.",
+    "best": "Ahorro de tiempo",
+    "recommend": true,
+    "reuse": true,
+    "authorized": true
+  }
+]

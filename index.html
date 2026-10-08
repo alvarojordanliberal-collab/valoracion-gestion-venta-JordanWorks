@@ -1,246 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Valoración de experiencia - Gestión profesional de venta de vehículos">
-<title>Valoración de servicio | Gestión de venta</title>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Experiencias de clientes | Jordan Works</title>
 <style>
-:root{
-  --bg:#f4f5f7; --card:#fff; --text:#15171a; --muted:#69707a;
-  --line:#e2e5e9; --accent:#111827; --accent2:#2563eb; --success:#166534;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.container{max-width:720px;margin:0 auto;padding:28px 16px 50px}
-.header{text-align:center;margin:12px 0 24px}
-.logo{font-size:13px;letter-spacing:.18em;font-weight:700;text-transform:uppercase;color:#4b5563;margin-bottom:18px}
-h1{font-size:30px;line-height:1.12;margin:0 0 10px;letter-spacing:-.03em}
-.intro{color:var(--muted);line-height:1.55;margin:0 auto;max-width:580px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 8px 28px rgba(15,23,42,.05)}
-.progress{height:6px;background:#eceff2;border-radius:99px;overflow:hidden;margin-bottom:24px}
-.progress span{display:block;height:100%;width:0;background:var(--accent2);transition:.2s}
-.question{padding:20px 0;border-bottom:1px solid var(--line)}
-.question:last-of-type{border-bottom:0}
-label.title{display:block;font-weight:700;font-size:16px;line-height:1.4;margin-bottom:12px}
-.required{color:#b91c1c}
-.help{font-size:13px;color:var(--muted);margin-top:-5px;margin-bottom:12px}
-.options{display:grid;gap:9px}
-.option{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;transition:.15s}
-.option:hover{border-color:#aeb5bd;background:#fafafa}
-.option input{accent-color:var(--accent2)}
-textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px;font:inherit;outline:none;background:#fff}
-textarea{min-height:110px;resize:vertical}
-textarea:focus,input[type=text]:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(37,99,235,.10)}
-.stars{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px}
-.stars input{position:absolute;opacity:0;pointer-events:none}
-.stars label{font-size:37px;color:#d5d9de;cursor:pointer;line-height:1}
-.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:#f5b301}
-.submit{width:100%;border:0;border-radius:12px;background:var(--accent);color:#fff;padding:15px 18px;font-size:16px;font-weight:700;cursor:pointer;margin-top:18px}
-.submit:hover{background:#252a33}
-.consent{font-size:12px;line-height:1.5;color:var(--muted);margin-top:14px}
-.success{display:none;text-align:center;padding:30px 8px}
-.success h2{margin:0 0 10px}
-.success p{color:var(--muted);line-height:1.55}
-.footer{text-align:center;color:#8a919b;font-size:12px;margin-top:20px}
-@media(max-width:520px){
- .container{padding:18px 11px 36px}
- .card{padding:18px;border-radius:15px}
- h1{font-size:27px}
- .stars label{font-size:34px}
-}
-</style>
-</head>
-<body>
-<div class="container">
-  <header class="header">
-    <div class="logo">Gestión profesional de venta</div>
-    <h1>¿Cómo ha sido tu experiencia?</h1>
-    <p class="intro">Tu opinión nos ayuda a mejorar el servicio y permite que otras personas conozcan experiencias reales.</p>
-  </header>
-
-  <main class="card">
-    <div class="progress"><span id="progress"></span></div>
-
-    <form action="https://formsubmit.co/alvarojordanliberal@gmail.com" method="POST" id="feedbackForm">
-      <input type="hidden" name="_subject" value="Nueva valoración - Gestión de venta de vehículo">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="">
-
-      <div class="question">
-        <label class="title">1. ¿Cómo valorarías el servicio recibido? <span class="required">*</span></label>
-        <div class="stars" aria-label="Valoración general">
-          <input id="s5" type="radio" name="Valoración general" value="5 - Excelente" required><label for="s5" title="5">★</label>
-          <input id="s4" type="radio" name="Valoración general" value="4 - Muy bueno"><label for="s4" title="4">★</label>
-          <input id="s3" type="radio" name="Valoración general" value="3 - Bueno"><label for="s3" title="3">★</label>
-          <input id="s2" type="radio" name="Valoración general" value="2 - Mejorable"><label for="s2" title="2">★</label>
-          <input id="s1" type="radio" name="Valoración general" value="1 - Malo"><label for="s1" title="1">★</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">2. ¿Cómo valorarías nuestra profesionalidad? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Profesionalidad" value="Excelente" required> Excelente</label>
-          <label class="option"><input type="radio" name="Profesionalidad" value="Muy buena"> Muy buena</label>
-          <label class="option"><input type="radio" name="Profesionalidad" value="Buena"> Buena</label>
-          <label class="option"><input type="radio" name="Profesionalidad" value="Mejorable"> Mejorable</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">3. ¿Cómo valorarías la comunicación durante el proceso? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Comunicación" value="Excelente" required> Excelente</label>
-          <label class="option"><input type="radio" name="Comunicación" value="Muy buena"> Muy buena</label>
-          <label class="option"><input type="radio" name="Comunicación" value="Buena"> Buena</label>
-          <label class="option"><input type="radio" name="Comunicación" value="Mejorable"> Mejorable</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">4. ¿Cómo valorarías la calidad de las fotografías y presentación del vehículo? <span class="required">*</span></label>
-        <div class="stars">
-          <input id="p5" type="radio" name="Fotografías y presentación" value="5 - Excelente" required><label for="p5">★</label>
-          <input id="p4" type="radio" name="Fotografías y presentación" value="4 - Muy buena"><label for="p4">★</label>
-          <input id="p3" type="radio" name="Fotografías y presentación" value="3 - Buena"><label for="p3">★</label>
-          <input id="p2" type="radio" name="Fotografías y presentación" value="2 - Mejorable"><label for="p2">★</label>
-          <input id="p1" type="radio" name="Fotografías y presentación" value="1 - Mala"><label for="p1">★</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">5. ¿Cómo valorarías la calidad y claridad del anuncio publicado? <span class="required">*</span></label>
-        <div class="stars">
-          <input id="a5" type="radio" name="Anuncio" value="5 - Excelente" required><label for="a5">★</label>
-          <input id="a4" type="radio" name="Anuncio" value="4 - Muy bueno"><label for="a4">★</label>
-          <input id="a3" type="radio" name="Anuncio" value="3 - Bueno"><label for="a3">★</label>
-          <input id="a2" type="radio" name="Anuncio" value="2 - Mejorable"><label for="a2">★</label>
-          <input id="a1" type="radio" name="Anuncio" value="1 - Malo"><label for="a1">★</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">6. ¿Cómo valorarías la gestión de llamadas, mensajes y compradores interesados? <span class="required">*</span></label>
-        <div class="stars">
-          <input id="g5" type="radio" name="Gestión de interesados" value="5 - Excelente" required><label for="g5">★</label>
-          <input id="g4" type="radio" name="Gestión de interesados" value="4 - Muy buena"><label for="g4">★</label>
-          <input id="g3" type="radio" name="Gestión de interesados" value="3 - Buena"><label for="g3">★</label>
-          <input id="g2" type="radio" name="Gestión de interesados" value="2 - Mejorable"><label for="g2">★</label>
-          <input id="g1" type="radio" name="Gestión de interesados" value="1 - Mala"><label for="g1">★</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">7. ¿Consideras que el servicio te ahorró tiempo y preocupaciones durante la venta? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Ahorro de tiempo y preocupaciones" value="Mucho" required> Mucho</label>
-          <label class="option"><input type="radio" name="Ahorro de tiempo y preocupaciones" value="Bastante"> Bastante</label>
-          <label class="option"><input type="radio" name="Ahorro de tiempo y preocupaciones" value="Poco"> Poco</label>
-          <label class="option"><input type="radio" name="Ahorro de tiempo y preocupaciones" value="Nada"> Nada</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">8. ¿Consideras que la gestión profesional ayudó a conseguir un mejor resultado que vender el vehículo por tu cuenta? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Mejor resultado que venta particular" value="Sí, claramente" required> Sí, claramente</label>
-          <label class="option"><input type="radio" name="Mejor resultado que venta particular" value="Sí, en cierta medida"> Sí, en cierta medida</label>
-          <label class="option"><input type="radio" name="Mejor resultado que venta particular" value="No estoy seguro/a"> No estoy seguro/a</label>
-          <label class="option"><input type="radio" name="Mejor resultado que venta particular" value="No"> No</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">9. ¿Qué fue lo que más valoraste del servicio?</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Ahorro de tiempo"> Ahorro de tiempo</label>
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Atención personalizada"> Atención personalizada</label>
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Fotografía y presentación"> Fotografía y presentación</label>
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Gestión de compradores"> Gestión de compradores</label>
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Negociación"> Negociación</label>
-          <label class="option"><input type="radio" name="Aspecto más valorado" value="Otro"> Otro</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">10. ¿Qué aspecto del servicio mejorarías o cambiarías?</label>
-        <textarea name="Qué mejorarías" placeholder="Tu respuesta..."></textarea>
-      </div>
-
-      <div class="question">
-        <label class="title">11. Si tuvieras que describir el servicio en una frase a un amigo que quiere vender su coche, ¿qué le dirías?</label>
-        <textarea name="Testimonio del cliente" placeholder="Escribe aquí tu experiencia..."></textarea>
-      </div>
-
-      <div class="question">
-        <label class="title">12. ¿Volverías a utilizar este servicio?</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Volvería a utilizar el servicio" value="Sí, sin duda"> Sí, sin duda</label>
-          <label class="option"><input type="radio" name="Volvería a utilizar el servicio" value="Probablemente sí"> Probablemente sí</label>
-          <label class="option"><input type="radio" name="Volvería a utilizar el servicio" value="No estoy seguro/a"> No estoy seguro/a</label>
-          <label class="option"><input type="radio" name="Volvería a utilizar el servicio" value="No"> No</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">13. ¿Recomendarías este servicio a un familiar, amigo o conocido?</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Recomendaría el servicio" value="Sí, sin duda"> Sí, sin duda</label>
-          <label class="option"><input type="radio" name="Recomendaría el servicio" value="Probablemente sí"> Probablemente sí</label>
-          <label class="option"><input type="radio" name="Recomendaría el servicio" value="No estoy seguro/a"> No estoy seguro/a</label>
-          <label class="option"><input type="radio" name="Recomendaría el servicio" value="No"> No</label>
-        </div>
-      </div>
-
-      <div class="question">
-        <label class="title">14. Si quieres, déjanos tu nombre</label>
-        <input type="text" name="Nombre del cliente" placeholder="Nombre">
-      </div>
-
-      <div class="question">
-        <label class="title">15. ¿Autorizas a utilizar tu comentario como testimonio comercial?</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="Autorización para usar testimonio" value="Sí"> Sí</label>
-          <label class="option"><input type="radio" name="Autorización para usar testimonio" value="No"> No</label>
-        </div>
-        <p class="help">Solo utilizaremos el comentario con finalidad comercial si nos das permiso.</p>
-      </div>
-
-      <button class="submit" type="submit">Enviar valoración</button>
-      <p class="consent">Al enviar este formulario, tu respuesta será enviada al responsable del servicio para valorar y mejorar la experiencia de los clientes.</p>
-    </form>
-
-    <div class="success" id="success">
-      <h2>¡Gracias por tu valoración!</h2>
-      <p>Tu opinión se ha enviado correctamente. Gracias por ayudarnos a mejorar y por compartir tu experiencia.</p>
-    </div>
-  </main>
-
-  <div class="footer">Gestión profesional de venta de vehículos</div>
+:root{--ink:#111315;--muted:#69717a;--line:#e5e7e9;--bg:#f6f6f4;--gold:#b18a45}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:0 20px 60px}header{text-align:center;padding:62px 0 38px}.ey{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#727980;font-weight:700}
+h1{font-size:46px;letter-spacing:-.045em;margin:17px 0 13px}.intro{max-width:650px;margin:auto;color:var(--muted);line-height:1.65}
+.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px}.stat{background:#fff;border:1px solid var(--line);border-radius:999px;padding:11px 16px;font-size:13px;font-weight:700}.stars{color:var(--gold);letter-spacing:3px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 15px 40px rgba(0,0,0,.045)}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.verified{font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid #ddd;padding:6px 9px;border-radius:999px;color:#666}
+.quote{font-size:20px;line-height:1.55;margin:21px 0 18px}.highlight{font-size:14px;line-height:1.55;color:#555d64;border-left:2px solid #d7d0c2;padding-left:13px;margin-bottom:22px}.details{border-top:1px solid var(--line);padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.label{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#8b9197;margin-bottom:5px}.value{font-size:13px;font-weight:700}.empty{text-align:center;padding:50px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:20px}.cta{margin-top:35px;background:#17191b;color:#fff;border-radius:22px;padding:34px;text-align:center}.cta h2{margin:0 0 9px}.cta p{color:#c5c9cd;line-height:1.55}.cta a{display:inline-block;background:#fff;color:#17191b;text-decoration:none;padding:12px 17px;border-radius:9px;font-weight:700}
+@media(max-width:720px){h1{font-size:36px}.grid{grid-template-columns:1fr}.card{padding:24px}.details{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+<header><div class="ey">Jordan Works · Gestión profesional de venta</div><h1>Experiencias de clientes</h1>
+<p class="intro">Opiniones reales de propietarios que han confiado en Jordan Works para gestionar la venta de su vehículo.</p>
+<div class="stats" id="stats"></div></header>
+<main id="reviews"></main>
+<section class="cta"><h2>¿Estás pensando en vender tu vehículo?</h2><p>Conoce el servicio y descubre cómo podemos encargarnos de la gestión del proceso de venta.</p><a href="index.html">Valorar el servicio</a></section>
 </div>
-
 <script>
-const form=document.getElementById('feedbackForm');
-const progress=document.getElementById('progress');
-function updateProgress(){
-  const required=[...form.querySelectorAll('[required]')];
-  const names=[...new Set(required.map(x=>x.name))];
-  const done=names.filter(n=>form.querySelector(`[name="${CSS.escape(n)}"]:checked`)).length;
-  progress.style.width=Math.min(100,Math.round(done/names.length*100))+'%';
+async function load(){
+ const data=await fetch('reviews.json?'+Date.now()).then(r=>r.json());
+ const a=data.filter(x=>x.authorized);
+ const avg=a.length?(a.reduce((s,x)=>s+Number(x.rating||0),0)/a.length).toFixed(1):"0.0";
+ const rec=a.length?Math.round(a.filter(x=>x.recommend).length/a.length*100):0;
+ document.getElementById('stats').innerHTML=
+ `<div class="stat"><span class="stars">★★★★★</span> ${avg}/5</div><div class="stat">${a.length} experiencia${a.length===1?'':'s'}</div><div class="stat">${rec}% recomendarían el servicio</div>`;
+ const el=document.getElementById('reviews');
+ if(!a.length){el.innerHTML='<div class="empty">Todavía no hay experiencias publicadas.</div>';return}
+ el.className='grid';
+ el.innerHTML=a.map(x=>`<article class="card"><div class="top"><div class="stars">${'★'.repeat(x.rating)}${'☆'.repeat(5-x.rating)}</div><div class="verified">✓ Testimonio autorizado</div></div>
+ <p class="quote">“${escapeHtml(x.testimonial)}”</p>${x.highlight?`<p class="highlight">“${escapeHtml(x.highlight)}”</p>`:''}
+ <div class="details"><div><div class="label">Cliente</div><div class="value">${escapeHtml(x.name)}</div></div><div><div class="label">Vehículo</div><div class="value">${escapeHtml(x.vehicle)} · ${escapeHtml(x.year)}</div></div>
+ <div><div class="label">Valoración</div><div class="value">${x.rating}/5 · ${x.rating===5?'Excelente':''}</div></div><div><div class="label">Lo que más valoró</div><div class="value">${escapeHtml(x.best||'—')}</div></div></div></article>`).join('');
 }
-form.addEventListener('change',updateProgress);
-form.addEventListener('submit',function(){
-  const next=new URL(window.location.href);
-  next.searchParams.set('enviado','1');
-  form.querySelector('input[name="_next"]').value=next.toString();
-});
-if(new URLSearchParams(location.search).get('enviado')==='1'){
-  form.style.display='none';
-  document.getElementById('success').style.display='block';
-}
-updateProgress();
-</script>
-</body>
-</html>
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+load();
+</script></body></html>

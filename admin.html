@@ -1,0 +1,33 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel de reputación | Jordan Works</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f6f7;color:#151719;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.wrap{max-width:1000px;margin:auto;padding:28px 18px 60px}
+h1{letter-spacing:-.04em}.sub{color:#69717a}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat,.box{background:#fff;border:1px solid #e2e5e8;border-radius:15px;padding:18px}.num{font-size:26px;font-weight:800}.label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#747b82}.box{margin-top:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:12px;font-weight:700;display:block;margin-bottom:6px}input,textarea,select{width:100%;padding:11px;border:1px solid #d8dce0;border-radius:9px;font:inherit}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:0;border-radius:9px;padding:11px 15px;font-weight:750;cursor:pointer;background:#151719;color:#fff}button.secondary{background:#eef0f2;color:#202326}.item{padding:15px 0;border-bottom:1px solid #e6e7e9;display:flex;justify-content:space-between;gap:15px}.stars{color:#b18a45;letter-spacing:2px}@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style></head><body><div class="wrap">
+<h1>Panel de reputación · Jordan Works</h1><p class="sub">Añade, revisa y exporta tus testimonios. Este panel funciona en tu navegador.</p>
+<div class="stats" id="stats"></div>
+<div class="box"><h2>Añadir testimonio</h2><div class="grid">
+<div><label>Nombre</label><input id="name"></div><div><label>Vehículo</label><input id="vehicle" placeholder="BMW Serie 3"></div>
+<div><label>Año</label><input id="year" placeholder="2019"></div><div><label>Valoración (1-5)</label><select id="rating"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+<div class="full"><label>Testimonio principal</label><textarea id="testimonial"></textarea></div>
+<div class="full"><label>Frase destacada opcional</label><textarea id="highlight" placeholder="La frase más potente que haya dicho el cliente"></textarea></div>
+<div><label>Lo que más valoró</label><input id="best"></div><div><label>¿Recomendaría?</label><select id="recommend"><option value="true">Sí</option><option value="false">No</option></select></div>
+<div><label>¿Volvería a contratar?</label><select id="reuse"><option value="true">Sí</option><option value="false">No</option></select></div><div><label>¿Autoriza publicación?</label><select id="authorized"><option value="true">Sí</option><option value="false">No</option></select></div>
+</div><div class="btns"><button onclick="add()">Añadir testimonio</button><button class="secondary" onclick="download()">Descargar reviews.json</button><button class="secondary" onclick="document.getElementById('file').click()">Importar reviews.json</button><input id="file" type="file" accept=".json" hidden onchange="importFile(event)"></div>
+<p class="sub">Después de añadir una reseña, descarga el <b>reviews.json</b> y súbelo a GitHub sustituyendo el anterior. La página pública actualizará las estadísticas y las tarjetas automáticamente.</p></div>
+<div class="box"><h2>Testimonios guardados</h2><div id="list"></div></div>
+</div>
+<script>
+let reviews=[];
+async function init(){try{reviews=await fetch('reviews.json?'+Date.now()).then(r=>r.json())}catch(e){reviews=[]}render()}
+function render(){
+ const a=reviews.filter(x=>x.authorized), avg=a.length?(a.reduce((s,x)=>s+Number(x.rating),0)/a.length).toFixed(1):'0.0', rec=a.length?Math.round(a.filter(x=>x.recommend).length/a.length*100):0;
+ document.getElementById('stats').innerHTML=`<div class="stat"><div class="label">Experiencias</div><div class="num">${a.length}</div></div><div class="stat"><div class="label">Media</div><div class="num">★ ${avg}</div></div><div class="stat"><div class="label">Recomendarían</div><div class="num">${rec}%</div></div><div class="stat"><div class="label">Guardadas</div><div class="num">${reviews.length}</div></div>`;
+ document.getElementById('list').innerHTML=reviews.length?reviews.map(x=>`<div class="item"><div><b>${esc(x.name)}</b> · ${esc(x.vehicle)} ${esc(x.year)}<br><span class="stars">${'★'.repeat(x.rating)}${'☆'.repeat(5-x.rating)}</span> · ${x.authorized?'Publicado':'No publicado'}</div><button class="secondary" onclick="removeReview(${x.id})">Eliminar</button></div>`).join(''):'Sin testimonios todavía.';
+}
+function add(){const x={id:Date.now(),name:v('name'),vehicle:v('vehicle'),year:v('year'),rating:+v('rating'),testimonial:v('testimonial'),highlight:v('highlight'),best:v('best'),recommend:v('recommend')==='true',reuse:v('reuse')==='true',authorized:v('authorized')==='true'};if(!x.name||!x.testimonial){alert('Añade al menos nombre y testimonio.');return}reviews.push(x);render();['name','vehicle','year','testimonial','highlight','best'].forEach(id=>document.getElementById(id).value='');alert('Añadido. Ahora descarga reviews.json y súbelo a GitHub.')}
+function removeReview(id){if(confirm('¿Eliminar este testimonio?')){reviews=reviews.filter(x=>x.id!==id);render()}}
+function download(){const blob=new Blob([JSON.stringify(reviews,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='reviews.json';a.click();URL.revokeObjectURL(a.href)}
+function importFile(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{reviews=JSON.parse(r.result);render()}catch{alert('El archivo no es un JSON válido.')}};r.readAsText(f)}
+function v(id){return document.getElementById(id).value.trim()}function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+init();
+</script></body></html>
