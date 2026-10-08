@@ -1,18 +1,18 @@
-JORDAN WORKS — SISTEMA DE REPUTACIÓN V2
+VALORACIÓN - GESTIÓN PROFESIONAL DE VENTA
 
-Archivos:
-- index.html: página pública de experiencias.
-- admin.html: panel para añadir testimonios.
-- reviews.json: base de datos de testimonios.
+1. Sube index.html a un servicio de hosting estático gratuito (por ejemplo GitHub Pages).
+2. La acción del formulario está configurada para FormSubmit y el correo:
+   alvarojordanliberal@gmail.com
+3. La primera vez que se envíe una respuesta, FormSubmit puede pedir confirmar el correo.
+4. Haz una prueba tú mismo antes de enviar el enlace a clientes.
+5. Importante: el formulario envía datos al correo; no almacena un histórico propio en una base de datos.
 
-Cómo usarlo:
-1. Sube los tres archivos al mismo repositorio de GitHub Pages.
-2. Abre /admin.html para gestionar testimonios.
-3. Añade una respuesta real.
-4. Pulsa "Descargar reviews.json".
-5. En GitHub sustituye el reviews.json antiguo por el nuevo.
-6. La página pública /index.html se actualiza automáticamente.
-
-IMPORTANTE:
-GitHub Pages es alojamiento estático. El panel no puede escribir directamente en GitHub por sí solo de forma segura. Por eso el flujo actual es: añadir -> descargar JSON -> subir JSON a GitHub.
-La siguiente evolución, si quieres, es conectar esto con Google Sheets/App Script para que las respuestas se guarden automáticamente y no tengas que subir el JSON manualmente.
+RECOMENDACIÓN:
+Cuando ya tengas varias valoraciones, podemos crear una segunda versión con:
+- panel privado de valoraciones,
+- estadísticas,
+- puntuación media,
+- testimonios aprobados,
+- filtro por vehículo,
+- enlace específico de Google,
+- y un CRM sencillo.
