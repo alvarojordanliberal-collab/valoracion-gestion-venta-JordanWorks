@@ -11,5 +11,18 @@
     "recommend": true,
     "reuse": true,
     "authorized": true
+  },
+  {
+    "id": 1791549652806,
+    "name": "Marcos Diez",
+    "vehicle": "Audi Q3 Sportback",
+    "year": "2022",
+    "rating": 5,
+    "testimonial": "Encantados en con servicio. Álvaro cumplió su palabra y no tuvimos que hacer nada, se encargó de todo. Quedamos con un par de clientes antes de la venta definitiva y fue un gusto ya que no tuvimos que preocuparnos por enseñarlo o responder preguntas de los interesados. Sin duda si en el futuro lo necesitamos volveremos a ponernos en contacto ya que nos ha ayudado mucho. Gracias!",
+    "highlight": "",
+    "best": "El tiempo ahorrado, entre trabajo y demás no tenemos tiempo ni ganas de estar respondiendo mensajes, llamadas, quedar con gente... Y la comunicación, ya que en todo momento sabíamos como iba el proceso.",
+    "recommend": true,
+    "reuse": true,
+    "authorized": true
   }
 ]
