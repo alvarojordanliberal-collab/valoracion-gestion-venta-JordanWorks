@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valoración del servicio | Gestión de venta</title>
+<style>
+:root{--ink:#171717;--muted:#6b6b6b;--line:#e5e5e5;--bg:#f6f6f4;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:700px;margin:auto;padding:20px 14px 50px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:27px;box-shadow:0 8px 30px #00000009}
+.logo{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:26px}
+h1{font-size:29px;line-height:1.12;margin:0 0 10px}.intro{color:var(--muted);line-height:1.5;margin:0 0 24px}
+.q{display:block;font-weight:650;margin:25px 0 11px}.stars{display:flex;gap:7px;flex-direction:row-reverse;justify-content:flex-end}.stars input{display:none}.stars label{font-size:39px;color:#d6d6d6;cursor:pointer}.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:#171717}
+.options{display:grid;gap:8px}.option{border:1px solid var(--line);border-radius:11px;padding:12px 13px;cursor:pointer;display:flex;gap:10px;align-items:center}.option:has(input:checked){border-color:#171717;background:#fafafa}.option input{accent-color:#171717}
+select,textarea,input[type=text],input[type=email]{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;font:inherit;background:#fff}select{margin-left:auto;width:170px}textarea{min-height:100px;resize:vertical}
+.check{display:flex;gap:9px;margin-top:16px;color:#4d4d4d;line-height:1.45;font-size:13px}.check input{margin-top:3px;accent-color:#171717}
+button{width:100%;margin-top:23px;border:0;border-radius:11px;padding:15px;background:#171717;color:white;font-size:16px;font-weight:650;cursor:pointer}.small{font-size:12px;color:#888;text-align:center;margin-top:13px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<div class="logo">Gestión profesional de venta</div>
+<h1>¿Cómo ha sido tu experiencia?</h1>
+<p class="intro">Tu opinión nos ayuda a mejorar el servicio y a que otros propietarios conozcan experiencias reales. Completarlo te llevará aproximadamente 1 minuto.</p>
+
+<form id="feedbackForm">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+<label class="q">1. ¿Cómo valorarías el servicio recibido?</label>
+<div class="stars">
+<input id="s5" name="Valoración general" type="radio" value="5 estrellas" required><label for="s5">★</label>
+<input id="s4" name="Valoración general" type="radio" value="4 estrellas"><label for="s4">★</label>
+<input id="s3" name="Valoración general" type="radio" value="3 estrellas"><label for="s3">★</label>
+<input id="s2" name="Valoración general" type="radio" value="2 estrellas"><label for="s2">★</label>
+<input id="s1" name="Valoración general" type="radio" value="1 estrella"><label for="s1">★</label>
+</div>
+
+<label class="q">2. ¿Cómo valorarías estos aspectos?</label>
+<div class="options">
+<label class="option">Profesionalidad<select name="Profesionalidad"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+<label class="option">Comunicación<select name="Comunicación"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+<label class="option">Fotografías del vehículo<select name="Fotografías"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+<label class="option">Calidad y claridad del anuncio<select name="Anuncio"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+<label class="option">Gestión de llamadas y mensajes<select name="Gestión de interesados"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+<label class="option">Gestión de visitas y negociación<select name="Visitas y negociación"><option>5 - Excelente</option><option>4 - Muy buena</option><option>3 - Buena</option><option>2 - Mejorable</option><option>1 - Mala</option></select></label>
+</div>
+
+<label class="q">3. ¿Qué fue lo que más valoraste del servicio?</label>
+<div class="options">
+<label class="option"><input type="radio" name="Lo más valorado" value="Atención personalizada"> Atención personalizada</label>
+<label class="option"><input type="radio" name="Lo más valorado" value="Ahorro de tiempo y preocupaciones"> Ahorro de tiempo y preocupaciones</label>
+<label class="option"><input type="radio" name="Lo más valorado" value="Fotografía y presentación"> Fotografía y presentación</label>
+<label class="option"><input type="radio" name="Lo más valorado" value="Gestión de compradores"> Gestión de compradores</label>
+<label class="option"><input type="radio" name="Lo más valorado" value="Negociación"> Negociación</label>
+</div>
+
+<label class="q">4. ¿Consideras que el servicio te ahorró tiempo y preocupaciones durante la venta?</label>
+<div class="options">
+<label class="option"><input type="radio" name="Ahorro de tiempo" value="Mucho"> Mucho</label>
+<label class="option"><input type="radio" name="Ahorro de tiempo" value="Bastante"> Bastante</label>
+<label class="option"><input type="radio" name="Ahorro de tiempo" value="Poco"> Poco</label>
+<label class="option"><input type="radio" name="Ahorro de tiempo" value="Nada"> Nada</label>
+</div>
+
+<label class="q">5. ¿Crees que la gestión profesional ayudó a conseguir un mejor resultado que vender el vehículo por tu cuenta?</label>
+<div class="options">
+<label class="option"><input type="radio" name="Mejor resultado" value="Sí, claramente"> Sí, claramente</label>
+<label class="option"><input type="radio" name="Mejor resultado" value="Sí, en cierta medida"> Sí, en cierta medida</label>
+<label class="option"><input type="radio" name="Mejor resultado" value="No estoy seguro"> No estoy seguro/a</label>
+<label class="option"><input type="radio" name="Mejor resultado" value="No"> No</label>
+</div>
+
+<label class="q">6. ¿Volverías a utilizar el servicio?</label>
+<div class="options">
+<label class="option"><input type="radio" name="Volvería a utilizarlo" value="Sí"> Sí</label>
+<label class="option"><input type="radio" name="Volvería a utilizarlo" value="No"> No</label>
+</div>
+
+<label class="q">7. ¿Recomendarías el servicio a otra persona que quisiera vender su coche?</label>
+<div class="options">
+<label class="option"><input type="radio" name="Recomendaría" value="Sí, sin duda"> Sí, sin duda</label>
+<label class="option"><input type="radio" name="Recomendaría" value="Probablemente sí"> Probablemente sí</label>
+<label class="option"><input type="radio" name="Recomendaría" value="No estoy seguro"> No estoy seguro/a</label>
+<label class="option"><input type="radio" name="Recomendaría" value="No"> No</label>
+</div>
+
+<label class="q">8. ¿Qué aspecto del servicio mejorarías o cambiarías?</label>
+<textarea name="Aspecto a mejorar" placeholder="Tu respuesta (opcional)"></textarea>
+
+<label class="q">9. Si tuvieras que describir el servicio en una frase a un amigo que quiere vender su coche, ¿qué le dirías?</label>
+<textarea name="Testimonio" placeholder="Tu experiencia en una frase..."></textarea>
+
+<label class="q">10. Nombre (opcional)</label>
+<input type="text" name="Nombre" placeholder="Tu nombre">
+
+<label class="q">11. ¿Autorizas a publicar tu nombre (si lo has indicado), puntuación, fecha, comentario y todas las respuestas de este cuestionario en la web? El correo electrónico nunca se publicará.</label>
+<div class="options">
+<label class="option"><input type="radio" name="Autorización testimonio" value="Sí, autorizo" required> Sí, autorizo</label>
+<label class="option"><input type="radio" name="Autorización testimonio" value="No autorizo" required> No autorizo</label>
+</div>
+
+<label class="q">12. Si quieres, puedes dejar tu email para que podamos contactar contigo sobre tu valoración (opcional)</label>
+<input type="email" name="Email del cliente" placeholder="tu@email.com">
+
+<label class="check"><input type="checkbox" required> He revisado mis respuestas y deseo enviarlas. Entiendo que se guardarán para gestionar mi valoración y que solo se publicarán los datos expresamente autorizados.</label>
+
+<button type="submit" id="sendBtn">Enviar valoración</button>
+<div id="feedbackStatus" role="status" aria-live="polite" style="margin-top:14px;line-height:1.5"></div>
+<div class="small">Gracias por confiar en nuestro servicio.</div>
+</form>
+<p class="small"><a href="index.html">Ver opiniones publicadas</a></p>
+</div></div>
+<script src="config.js"></script>
+<script>
+(() => {
+  const form = document.getElementById('feedbackForm');
+  const button = document.getElementById('sendBtn');
+  const status = document.getElementById('feedbackStatus');
+  const val = (fd, key) => String(fd.get(key) || '').trim();
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const fd = new FormData(form);
+    if (val(fd, '_honey')) return;
+    const stars = Number((val(fd, 'Valoración general').match(/^([1-5])/) || [])[1]);
+    if (!Number.isInteger(stars) || stars < 1 || stars > 5) {
+      status.textContent = 'Selecciona una valoración general.'; return;
+    }
+    if (!window.SUPABASE_URL || !window.SUPABASE_ANON_KEY || window.SUPABASE_URL.includes('TU_PROYECTO')) {
+      status.textContent = 'Falta configurar Supabase en config.js.'; return;
+    }
+    const data = {
+      estrellas: stars,
+      profesionalidad: val(fd, 'Profesionalidad'),
+      comunicacion: val(fd, 'Comunicación'),
+      fotografias: val(fd, 'Fotografías'),
+      anuncio: val(fd, 'Anuncio'),
+      gestion_interesados: val(fd, 'Gestión de interesados'),
+      visitas_negociacion: val(fd, 'Visitas y negociación'),
+      mas_valorado: val(fd, 'Lo más valorado'),
+      ahorro_tiempo: val(fd, 'Ahorro de tiempo'),
+      mejor_resultado: val(fd, 'Mejor resultado'),
+      volveria: val(fd, 'Volvería a utilizarlo'),
+      recomendaria: val(fd, 'Recomendaría'),
+      aspecto_mejorar: val(fd, 'Aspecto a mejorar'),
+      comentario: val(fd, 'Testimonio'),
+      nombre: val(fd, 'Nombre'),
+      autoriza_publicacion: val(fd, 'Autorización testimonio') === 'Sí, autorizo',
+      autoriza_detalles: val(fd, 'Autorización testimonio') === 'Sí, autorizo',
+      email: val(fd, 'Email del cliente')
+    };
+    button.disabled = true;
+    button.textContent = 'Enviando...';
+    status.textContent = '';
+    try {
+      const response = await fetch(`${window.SUPABASE_URL.replace(/\/$/, '')}/rest/v1/valoraciones_recibidas`, {
+        method: 'POST',
+        headers: {
+          apikey: window.SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${window.SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      form.reset();
+      status.style.color = '#17623c';
+      status.textContent = '¡Gracias! Tu valoración se ha enviado correctamente y queda pendiente de revisión.';
+    } catch (error) {
+      console.error('Error al enviar la valoración:', error);
+      status.style.color = '#a32424';
+      status.textContent = 'No se ha podido enviar. Comprueba tu conexión e inténtalo de nuevo.';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Enviar valoración';
+    }
+  });
+})();
+</script>
+</body>
+</html>

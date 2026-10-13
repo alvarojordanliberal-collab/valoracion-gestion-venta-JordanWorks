@@ -1,0 +1,12 @@
+1. En Supabase > SQL Editor ejecuta supabase.sql.
+2. En Project Settings > API copia Project URL y clave publica anon/publishable a config.js. NUNCA service_role.
+3. Publica index.html, cuestionario.html y config.js juntos en un alojamiento estatico.
+4. Abre cuestionario.html y envia una prueba. Verifica en Table Editor > valoraciones_recibidas.
+5. Comprueba que autoriza_publicacion sea true. Publica solo opiniones autorizadas mediante la consulta comentada al final de supabase.sql, desde SQL Editor.
+6. Abre index.html para comprobar la opinion publicada.
+
+NOTAS:
+- La pagina publica solo consulta valoraciones_publicas; la tabla de envios no tiene permiso SELECT para visitantes.
+- Este primer MVP requiere publicar manualmente desde SQL Editor; se puede automatizar con un panel privado mas adelante.
+- La media y el recuento se calculan sobre las primeras 1000 opiniones recuperadas; si superas ese numero, implementa paginacion o agregados.
+- Antes de uso real: aviso de privacidad, politica de conservacion, antispam/rate limiting y condiciones de alojamiento.
